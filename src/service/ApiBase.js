@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://api-rac-n-play.vercel.app/api/data/all";
+const API_BASE_URL = "https://api-rac-n-play.vercel.app/api/data/all?event=global";
 
 export const fetchAllData = async () => {
   try {
