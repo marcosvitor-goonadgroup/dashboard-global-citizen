@@ -46,9 +46,18 @@ const Filtros = () => {
 
   return (
     <>
-      {/* Botão para abrir Filtros */}
-      <div className="d-flex justify-content-end mb-3">
-        <Button variant="primary" onClick={() => setShowOffcanvas(true)}>
+      {/* Botão para abrir Filtros - Fixo no canto superior direito */}
+      <div style={{
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: 1040
+      }}>
+        <Button
+          variant="primary"
+          onClick={() => setShowOffcanvas(true)}
+          className="shadow-lg"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

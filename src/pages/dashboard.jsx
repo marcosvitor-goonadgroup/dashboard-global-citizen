@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BarChart, Bar, LineChart, Line, Area, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, Area, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useData } from '../context/DataContext';
 import Filtros from '../components/Filtros';
@@ -105,14 +105,32 @@ const Dashboard = () => {
 
   return (
     <div className="container-fluid py-4">
+      {/* Cabeçalho com logos */}
       <div className="row mb-4">
         <div className="col">
-          <h1 className="display-4">Dashboard Rec-n-Play</h1>
-          <p className="lead text-muted">Visão geral das métricas do evento</p>
+          <div className="d-flex align-items-center justify-content-center mb-3" style={{ gap: '2rem', flexWrap: 'wrap' }}>
+            <img
+              src="/images/logo_globo.webp"
+              alt="Global Citizen Festival Amazônia"
+              style={{ height: '80px', objectFit: 'contain' }}
+            />
+            <img
+              src="/images/bb_logo.webp"
+              alt="Banco do Brasil"
+              style={{ height: '70px', objectFit: 'contain' }}
+            />
+            <img
+              src="/images/a_gente_importa_globo_1.webp"
+              alt="A gente se importa"
+              style={{ height: '60px', objectFit: 'contain' }}
+            />
+          </div>
+          <h2 className="text-center mb-2" style={{ fontWeight: '600', color: '#333' }}>Dashboard - Global Citizen Festival Amazônia</h2>
+          <p className="text-center text-muted">Análise de Eventos e Ativações</p>
         </div>
       </div>
 
-      {/* Componente de Filtros */}
+      {/* Componente de Filtros - Fixo no canto superior direito */}
       <Filtros />
 
       {/* Alerta de Ativação Selecionada */}
@@ -137,16 +155,15 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 className="card-subtitle mb-2 text-muted">Total de Usuários</h6>
-                  <h6 className="card-subtitle mb-2 text-muted">com Ativações</h6>
-                  <h2 className="card-title mb-0 mt-2" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#0d6efd' }}>
+              <div className="d-flex justify-content-between align-items-start">
+                <div style={{ flex: 1 }}>
+                  <h6 className="card-subtitle mb-2 text-muted" style={{ minHeight: '40px' }}>Total de Usuários com Ativações</h6>
+                  <h2 className="card-title mb-0" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#0d6efd' }}>
                     {metrics.totalUsuariosComAtivacoes}
                   </h2>
                 </div>
-                <div className="bg-primary bg-opacity-10 rounded-circle p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#0d6efd" className="bi bi-people-fill" viewBox="0 0 16 16">
+                <div className="bg-primary bg-opacity-10 rounded p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0d6efd" className="bi bi-people-fill" viewBox="0 0 16 16">
                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
                   </svg>
                 </div>
@@ -158,15 +175,15 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 className="card-subtitle mb-2 text-muted">Total de Check-ins</h6>
-                  <h2 className="card-title mb-0 mt-2" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#198754' }}>
+              <div className="d-flex justify-content-between align-items-start">
+                <div style={{ flex: 1 }}>
+                  <h6 className="card-subtitle mb-2 text-muted" style={{ minHeight: '40px' }}>Total de Check-ins</h6>
+                  <h2 className="card-title mb-0" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#198754' }}>
                     {metrics.totalCheckins}
                   </h2>
                 </div>
-                <div className="bg-success bg-opacity-10 rounded-circle p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#198754" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <div className="bg-success bg-opacity-10 rounded p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#198754" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
                   </svg>
                 </div>
@@ -178,16 +195,16 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 className="card-subtitle mb-2 text-muted">Total de Resgates</h6>
-                  <h2 className="card-title mb-0 mt-2" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#dc3545' }}>
-                    {metrics.totalResgates}
+              <div className="d-flex justify-content-between align-items-start">
+                <div style={{ flex: 1 }}>
+                  <h6 className="card-subtitle mb-2 text-muted" style={{ minHeight: '40px' }}>Número de Ativações</h6>
+                  <h2 className="card-title mb-0" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#dc3545' }}>
+                    {metrics.totalAtivacoes}
                   </h2>
                 </div>
-                <div className="bg-danger bg-opacity-10 rounded-circle p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#dc3545" className="bi bi-gift-fill" viewBox="0 0 16 16">
-                    <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v.5h3.5V4H1zm5.5 0v.5h3V4h-3zm4.5 0v.5H15V4h-4zM0 5.5V14a1 1 0 0 0 1 1h6V5.5H0zm8 0V15h6a1 1 0 0 0 1-1V5.5H8z"/>
+                <div className="bg-danger bg-opacity-10 rounded p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#dc3545" className="bi bi-grid-3x3-gap-fill" viewBox="0 0 16 16">
+                    <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z"/>
                   </svg>
                 </div>
               </div>
@@ -198,17 +215,16 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="card border-0 shadow-sm h-100">
             <div className="card-body">
-              <div className="d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 className="card-subtitle mb-2 text-muted">Média Geral</h6>
-                  <h6 className="card-subtitle mb-2 text-muted">de Avaliações</h6>
-                  <h2 className="card-title mb-0 mt-2" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ffc107' }}>
+              <div className="d-flex justify-content-between align-items-start">
+                <div style={{ flex: 1 }}>
+                  <h6 className="card-subtitle mb-2 text-muted" style={{ minHeight: '40px' }}>Média Geral de Avaliações</h6>
+                  <h2 className="card-title mb-0" style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#ffc107' }}>
                     {metrics.mediaGeralAvaliacoes.toFixed(2)}
                   </h2>
-                  <small className="text-muted">de 5.00 ⭐</small>
+                  <small className="text-muted">de 5.00</small>
                 </div>
-                <div className="bg-warning bg-opacity-10 rounded-circle p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#ffc107" className="bi bi-star-fill" viewBox="0 0 16 16">
+                <div className="bg-warning bg-opacity-10 rounded p-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffc107" className="bi bi-star-fill" viewBox="0 0 16 16">
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
                   </svg>
                 </div>

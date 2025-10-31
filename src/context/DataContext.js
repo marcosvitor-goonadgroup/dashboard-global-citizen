@@ -568,17 +568,13 @@ export const DataProvider = ({ children }) => {
 
     const usuarios = filteredData.up_users?.data || [];
     const checkins = filteredData.checkins?.data || [];
-    const resgates = filteredData.resgates?.data || [];
-    const pesquisas = filteredData.pesquisa_experiencias?.data || [];
 
     // Contar totais de cada tabela
     const totalUsuarios = usuarios.length;
     const totalCheckins = checkins.length;
-    const totalResgates = resgates.length;
-    const totalPesquisas = pesquisas.length;
 
     // Encontrar o maior valor para calcular as larguras proporcionais
-    const maiorValor = Math.max(totalUsuarios, totalCheckins, totalResgates, totalPesquisas);
+    const maiorValor = Math.max(totalUsuarios, totalCheckins);
 
     return [
       {
@@ -592,18 +588,6 @@ export const DataProvider = ({ children }) => {
         quantidade: totalCheckins,
         percentual: maiorValor > 0 ? Math.round((totalCheckins / maiorValor) * 100) : 0,
         cor: '#198754'
-      },
-      {
-        etapa: 'Resgates',
-        quantidade: totalResgates,
-        percentual: maiorValor > 0 ? Math.round((totalResgates / maiorValor) * 100) : 0,
-        cor: '#dc3545'
-      },
-      {
-        etapa: 'Pesquisa de Experiência',
-        quantidade: totalPesquisas,
-        percentual: maiorValor > 0 ? Math.round((totalPesquisas / maiorValor) * 100) : 0,
-        cor: '#ffc107'
       }
     ];
   }, [getFilteredData]);
